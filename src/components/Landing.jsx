@@ -1,6 +1,6 @@
-import '../App.css'
+import '../App.css';
 
-function Landing() {
+function Landing({ darkMode, toggleDarkMode }) {
   return (
     <>
       <nav>
@@ -16,8 +16,14 @@ function Landing() {
           </svg>
         </a>
       </nav>
+      
+      {/* Dark Mode Toggle Button */}
+      <button onClick={toggleDarkMode} className="dark-mode-toggle">
+        {darkMode ? "Light Mode" : "Dark Mode"}
+      </button>
+
       <header>
-        <h1>SmartInvest<span> <p> Your One Stop Leanring Platform </p> <p> Learn, Invest, Succeed</p></span></h1>
+        <h1>SmartInvest<span> <p> Your One Stop Learning Platform </p> <p> Learn, Invest, Succeed</p></span></h1>
       </header>
 
       <main>
@@ -31,15 +37,13 @@ function Landing() {
           <section className="section--one">
             <article>
               <div className="title-wrap">
-                <h2>Level Up Your CSS.</h2>
+                <h2>Why Invest</h2>
               </div>
               <hr />
               <div className="content-wrap">
                 <p>
-                  Lorem, ipsum dolor sit, amet consectetur adipisicing elit. Ab
-                  vel rem dicta. Aut quidem, sed fugiat officiis inventore
-                  nostrum. Nam placeat porro, ea distinctio animi eius rerum,
-                  consequatur vero beatae.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vel rem dicta. 
+                  Aut quidem, sed fugiat officiis inventore nostrum.
                 </p>
               </div>
             </article>
@@ -50,10 +54,8 @@ function Landing() {
               <hr />
               <div className="content-wrap">
                 <p>
-                  Obcaecati nam doloremque fugiat cum corporis eveniet atque,
-                  molestias molestiae quaerat nihil sint nostrum cumque itaque
-                  commodi similique suscipit eos autem saepe velit enim voluptas
-                  eum quisquam, facilis ipsum. Et!
+                  Obcaecati nam doloremque fugiat cum corporis eveniet atque, molestias molestiae 
+                  quaerat nihil sint nostrum cumque itaque.
                 </p>
               </div>
             </article>
@@ -64,10 +66,8 @@ function Landing() {
               <hr />
               <div className="content-wrap">
                 <p>
-                  Nulla atque voluptatum, a natus, ut illum voluptas incidunt
-                  ipsam reprehenderit illo perferendis. Possimus dolorem tempora
-                  minima a mollitia aperiam aliquid voluptatibus fugiat aspernatur
-                  dignissimos, ullam libero odit molestias eveniet?
+                  Nulla atque voluptatum, a natus, ut illum voluptas incidunt ipsam reprehenderit 
+                  illo perferendis. Possimus dolorem tempora minima.
                 </p>
               </div>
             </article>
@@ -78,10 +78,8 @@ function Landing() {
               <hr />
               <div className="content-wrap">
                 <p>
-                  Similique expedita nihil beatae sunt adipisci deserunt culpa,
-                  nostrum, amet quis veritatis aperiam, ducimus repellat,
-                  assumenda atque quia dicta excepturi sint accusantium voluptas
-                  architecto. Tempore incidunt possimus aspernatur quidem, quasi!
+                  Similique expedita nihil beatae sunt adipisci deserunt culpa, nostrum, 
+                  amet quis veritatis aperiam, ducimus repellat.
                 </p>
               </div>
             </article>
@@ -96,7 +94,7 @@ function Landing() {
       </main>
       <footer>ʕ •ᴥ•ʔ jhey &copy; 2024</footer>
     </>
-  )
+  );
 }
 
-export default Landing 
+export default Landing;
