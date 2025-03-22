@@ -7,37 +7,68 @@
   box-sizing: border-box;
 }
 
+/* Define Variables */
+:root {
+  --bg-light: #ffffff;
+  --text-light: #000000;
+  --grid-light: rgba(0, 0, 0, 0.1);
+  
+  --bg-dark: #121212;
+  --text-dark: #ffffff;
+  --grid-dark: rgba(255, 255, 255, 0.1);
+}
+
+/* Default (Light Mode) */
 body {
   display: grid;
   place-items: center;
   min-height: 100vh;
-  background: hsl(0 0% 90%);
-  color: hsl(0 0% 10%);
-  font-family: 'Libre Baskerville', 'SF Pro Text', 'SF Pro Icons', 'AOS Icons', 'Helvetica Neue',
-    Helvetica, Arial, sans-serif, system-ui;
+  background: var(--bg-light);
+  color: var(--text-light);
+  font-family: 'Libre Baskerville', 'SF Pro Text', 'SF Pro Icons', 
+               'AOS Icons', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
+/* Dark Mode */
+body.dark-mode {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* Grid Effect */
 body::before {
   --size: 60px;
-  --line: hsl(0 0% 10% / 0.5);
   content: '';
   height: 100vh;
   width: 100vw;
   position: fixed;
   background: linear-gradient(
         90deg,
-        var(--line) 1px,
+        var(--grid-light) 1px,
         transparent 1px var(--size)
       )
       50% 50% / var(--size) var(--size),
-    linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% /
+    linear-gradient(var(--grid-light) 1px, transparent 1px var(--size)) 50% 50% /
       var(--size) var(--size);
-  mask: linear-gradient(-15deg, transparent 50%, white);
   top: 0;
-  transform-style: flat;
   pointer-events: none;
   z-index: -1;
 }
+
+/* Dark Mode Grid Effect */
+body.dark-mode::before {
+  background: linear-gradient(
+        90deg,
+        var(--grid-dark) 1px,
+        transparent 1px var(--size)
+      )
+      50% 50% / var(--size) var(--size),
+    linear-gradient(var(--grid-dark) 1px, transparent 1px var(--size)) 50% 50% /
+      var(--size) var(--size);
+}
+
+
 
 h1 {
   position: relative;
@@ -167,14 +198,16 @@ hr {
 .content {
   min-height: 100vh;
   display: grid;
-  grid-template: 1fr 1fr / 1fr;
-  place-items: center;
-  gap: 4rem;
+  grid-template-columns: 1fr 1fr; /* Splits into two columns */
+  align-items: center;
+  justify-content: center;
+  gap: 20rem; /* Increase gap between tiles and text */
   position: sticky;
   top: 0;
   margin-bottom: 50vh;
-  padding: 2rem;
+  padding: 3rem; /* Increase padding for more spacing */
 }
+
 
 article {
   display: grid;
@@ -237,27 +270,67 @@ footer {
   main {
     view-timeline-name: --main;
     width: 100%;
-  }
-  .section--one {
-    view-timeline-name: --section-one;
-  }
-  @media(min-width: 768px) {
-    .section--one {
-      justify-self: start;
+    display: flex;
+    flex-direction: column;
+    gap: 50px; /* Adds space between sections */
+}
+
+/* Increase text box width & font size for sections 1-4 */
+.section--one, .section--two, .section--three, .section--four {
+    max-width: 130%; /* Increase width */
+    width: 130%;
+    font-size: 1.4rem;  
+    line-height: 1.8;   
+    padding: 2rem;      
+    margin: 0 auto; /* Centers the section */
+}
+
+/* Expand the inner text box */
+.section--one article, .section--two article, .section--three article, .section--four article {
+    max-width: 100%;
+    width: 100%;
+}
+
+/* Increase heading size */
+.section--one h2, .section--two h2, .section--three h2, .section--four h2 {
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+/* Improve paragraph readability */
+.section--one p, .section--two p, .section--three p, .section--four p {
+    font-size: 1.2rem;
+}
+
+/* Responsive Adjustments */
+@media(min-width: 1024px) {
+    .section--one, .section--two, .section--three, .section--four {
+        max-width: 130%; /* Make slightly narrower on large screens */
     }
-  }
-  .section--two {
+}
+
+/* View timeline for each section */
+.section--one {
+    view-timeline-name: --section-one;
+}
+
+.section--two {
     view-timeline-name: --section-two;
-  }
-  .section--three {
+}
+
+.section--three {
     view-timeline-name: --section-three;
-  }
-  .section--four {
+}
+
+.section--four {
     view-timeline-name: --section-four;
-  }
-  .section--five {
+}
+
+.section--five {
     height: 50vh;
-  }
+}
+
+
 
   article :is(h2, p),
   .tile,
